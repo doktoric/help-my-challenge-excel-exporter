@@ -32,7 +32,7 @@ public class App {
 	public static void main(String[] args) throws IOException,
 			RowsExceededException, WriteException {
 		App app = new App();
-		app.setInputFile("c:/result2.xls");
+		app.setInputFile("c:/result1.xls");
 		app.read();
 	}
 
@@ -91,7 +91,7 @@ public class App {
 
 	private void writeToFile() throws RowsExceededException, WriteException,
 			IOException {
-		File file = new File("c:/resultList2.xls");
+		File file = new File("c:/resultList1.xls");
 		WorkbookSettings wbSettings = new WorkbookSettings();
 
 		wbSettings.setLocale(new Locale("en", "EN"));
@@ -154,9 +154,9 @@ public class App {
 		}
 		average = sum / machines.size();
 		Item item = new Item(begin, end, actual, sheetName,
-				(int) machines.get(0), (int) machines.get(1),
-				(int) machines.get(2), (int) machines.get(machines.size() - 1),
-				average);
+				machines.get(machines.size() - 1),
+				machines.get(machines.size() - 2),
+				machines.get(machines.size() - 3), machines.get(0), average);
 		System.out.println(item.toString());
 		items.add(item);
 	}
