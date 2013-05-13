@@ -32,7 +32,7 @@ public class App {
 	public static void main(String[] args) throws IOException,
 			RowsExceededException, WriteException {
 		App app = new App();
-		app.setInputFile("c:/result1.xls");
+		app.setInputFile("c:/result2.xls");
 		app.read();
 	}
 
@@ -61,6 +61,14 @@ public class App {
 						actual = cell.getContents().split(":")[0];
 						begin = i;
 					}
+					if (i==sheet.getRows()-1) {
+						addnew(actual, begin, end, sheet.getName(), machines);
+						machines = new ArrayList<Integer>();
+						machines.add(Integer.valueOf(valueCell.getContents()));
+						begin=0;
+						actual="";
+						break;
+					}
 					if (cell.getContents().startsWith(actual)) {
 						end = i;
 
@@ -73,12 +81,7 @@ public class App {
 						begin = i;
 
 					}
-					if (cell.getContents().trim().equals("")) {
-						addnew(actual, begin, end, sheet.getName(), machines);
-						machines = new ArrayList<Integer>();
-						machines.add(Integer.valueOf(valueCell.getContents()));
-						break;
-					}
+					
 				}
 			}
 
@@ -91,7 +94,7 @@ public class App {
 
 	private void writeToFile() throws RowsExceededException, WriteException,
 			IOException {
-		File file = new File("c:/resultList1.xls");
+		File file = new File("c:/resultList2.xls");
 		WorkbookSettings wbSettings = new WorkbookSettings();
 
 		wbSettings.setLocale(new Locale("en", "EN"));
