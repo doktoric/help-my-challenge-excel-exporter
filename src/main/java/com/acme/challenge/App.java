@@ -156,6 +156,7 @@ public class App {
 			sum += integer;
 		}
 		average = (double)sum / (double)machines.size();
+		average= Math.ceil(average);
 		Item item = new Item(begin, end, actual, sheetName,
 				machines.get(machines.size() - 1),
 				machines.get(machines.size() - 2),

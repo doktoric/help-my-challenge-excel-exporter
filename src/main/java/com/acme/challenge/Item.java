@@ -68,7 +68,7 @@ public class Item {
 	}
 
 	public String getAverage() {
-		return average.toString();
+		return average.toString().replace(".", ",");
 	}
 
 	public void setAverage(Double average) {
